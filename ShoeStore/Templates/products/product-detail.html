@@ -15,7 +15,7 @@
 {% endblock sitecss %}
 
 {% block banner-area %}
-    {% include "product/banner-organic-breadcrumb.html" %}
+    {% include "products/banner-organic-breadcrumb.html" %}
 {% endblock banner-area %}
 
 {% block product-area %}
@@ -26,22 +26,22 @@
 				<div class="col-lg-6">
 					<div class="s_Product_carousel">
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{Product.image.url}}" alt="">
+							<img class="img-fluid" src="{% static 'homepage/img/product/p1.jpg' %}{% comment %}{{Product.image.url}}{% endcomment %}" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{Product.image.url}}" alt="">
+							<img class="img-fluid" src="{% static 'homepage/img/product/p1.jpg' %}{% comment %}{{Product.image.url}}{% endcomment %}" alt="">
 						</div>
 						<div class="single-prd-item">
-							<img class="img-fluid" src="{{Product.image.url}}" alt="">
+							<img class="img-fluid" src="{% static 'homepage/img/product/p1.jpg' %}{% comment %}{{Product.image.url}}{% endcomment %}" alt="">
 						</div>
 					</div>
 				</div>
 				<div class="col-lg-5 offset-lg-1">
 					<div class="s_product_text">
-						<h3>{{Product.title}}</h3>
-						<h2>${{Product.price}}</h2>
+						<h3>{{object.title}}</h3>
+						<h2>${{object.price}}</h2>
 						<ul class="list">
-							<li><a class="active" href="#"><span>Category</span> : {{Product.category}}</a></li>
+							<li><a class="active" href="#"><span>Category</span> : {% comment %}{{Product.category}}{% endcomment %}</a></li>
 							<li><a href="#"><span>Availibility</span> : In Stock</a></li>
 						</ul>
 						<!-- <p>{{Product.description}}</p> -->
