@@ -49,7 +49,7 @@
 					{% for Product in object_list %}
 						<div class="col-lg-3 col-md-6">
 							<div class="single-product">
-								<a href="{% comment %}{{Product.get_absolute_url}}{% endcomment %}"><img class="img-fluid" src="{% static 'homepage/img/product/p1.jpg' %}{% comment %}{{Product.image.url}}{% endcomment %}" width="262px" height="280px" alt=""></a>
+								<a href="{% comment %}{{Product.get_absolute_url}}{% endcomment %}"><img class="img-fluid" src="{{ Product.image.url }}" width="262px" height="280px" alt=""></a>
 								<div class="product-details">
 									<h6>{{Product.title}}</h6>
 									<br>
