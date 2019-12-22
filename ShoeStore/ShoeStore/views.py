@@ -1,15 +1,22 @@
-from django.contrib.auth import authenticate
 from django.shortcuts import render
+from django.views.generic import ListView
 
-def home_page(request):
-    context = {
-        "title":"Hello World!",
-        "content":" Welcome to the homepage.",
+from products.models import Product
 
-    }
-    if request.user.is_authenticated():
-        context["premium_content"] = "YEAHHHHHH"
-    return render(request, "home_page.html", context)
+class HomeView(ListView):
+    queryset = Product.objects.all()
+    template_name = "homepage/home.html"
+
+
+# def home_page(request):
+#     context = {
+#         "title":"Hello World!",
+#         "content":" Welcome to the homepage.",
+
+#     }
+#     if request.user.is_authenticated():
+#         context["premium_content"] = "YEAHHHHHH"
+#     return render(request, "home_page.html", context)
 
 # class HomeView(View):
 #     def get(self, request):

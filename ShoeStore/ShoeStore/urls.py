@@ -18,16 +18,18 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from django.contrib import admin
 
-from .views import home_page
+from .views import HomeView
 
 urlpatterns = [
-    path('', home_page),
+    path('', HomeView.as_view()),
     # url('about/', about_page),
     # url('contact/', contact_page),
     # url('login/', login_page),
     # url('register/', register_page),
     path('authen/', include('authen.urls')),
+    path('products/', include('products.urls')),
     path('admin/', admin.site.urls),
+
 ]
 
 if settings.DEBUG:
