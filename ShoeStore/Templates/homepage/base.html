@@ -1,0 +1,83 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+
+<head>
+	<!-- Mobile Specific Meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<!-- Favicon-->
+	<link rel="shortcut icon" href="{% static 'homepage/img/fav.png' %}">
+	<!-- Author Meta -->
+	<meta name="author" content="CodePixar">
+	<!-- Meta Description -->
+	<meta name="description" content="">
+	<!-- Meta Keyword -->
+	<meta name="keywords" content="">
+	<!-- meta character set -->
+	<meta charset="UTF-8">
+	<!-- Site Title -->
+	<title>{% block title %}{% endblock %}</title>
+	<!--
+		CSS
+		============================================= -->
+	{% block sitecss %}
+	{% endblock %}
+
+	{% block extracss %}
+	{% endblock %}
+
+	{% block extrajs %}
+	{% endblock %}
+</head>
+
+<body>
+
+	<!-- Start Header Area -->
+	{% include 'homepage/header.html' %}	
+	<!-- End Header Area -->
+
+	<!-- start banner Area -->
+	{% block banner-area %}
+	{% endblock banner-area %}
+	<!-- End banner Area -->
+
+	<!-- start features Area -->
+	{% block features-area %}
+	{% endblock features-area %}
+	<!-- end features Area -->
+
+	<!-- Start category Area -->
+	{% block category-area %}
+	{% endblock category-area %}
+	<!-- End category Area -->
+
+	<!-- start product Area -->
+	{% block product-area %}
+		{% block product %}
+		{% endblock product %}
+	{% endblock product-area %}
+	<!-- end product Area -->
+	
+	<!-- Start exclusive deal Area -->
+	{% block exclusive-deal %}
+	{% endblock exclusive-deal %}
+	<!-- End exclusive deal Area -->
+
+	<!-- Start brand Area -->
+	{% block brand-section_gap %}
+	{% endblock brand-section_gap %}
+	<!-- End brand Area -->
+
+	<!-- Start related-product Area -->
+	{% block related-product %}	
+	{% endblock related-product %}
+	<!-- End related-product Area -->
+
+	<!-- start footer Area -->
+	{% include 'homepage/footer.html' %}
+	<!-- End footer Area -->
+	{% block sitejs %}
+	{% endblock %}
+</body>
+
+</html>
