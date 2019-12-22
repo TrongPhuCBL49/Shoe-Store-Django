@@ -11,6 +11,12 @@ def home_page(request):
         context["premium_content"] = "YEAHHHHHH"
     return render(request, "home_page.html", context)
 
+# class HomeView(View):
+#     def get(self, request):
+#         Active_Products = filter(lambda product: product.active, Product.objects.all())
+#         Products = {'Products': Active_Products}
+#         return render(request, 'homepage/home.html', Products) 
+
 # def about_page(request):
 #     context = {
 #         "title":"About Page",
