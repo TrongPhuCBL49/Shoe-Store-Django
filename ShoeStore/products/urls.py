@@ -6,6 +6,7 @@ from .views import (
     product_detail_view,
     ProductFeaturedListView,
     ProductFeaturedDetailView,
+    ProductDetailSlugView
     )
 
 app_name = 'products'
@@ -17,5 +18,6 @@ urlpatterns = [
     path('products-fbv/<int:pk>', product_detail_view, name='products-fbv-detail'),
     path('feature-products/', ProductFeaturedListView.as_view(), name='feature-products'),
     path('feature-products/<int:pk>', ProductFeaturedDetailView.as_view(), name='feature-products-detail'),
+    path('products/<slug:slug>', ProductDetailSlugView.as_view(), name='products-slug-detail'),
     
 ]
