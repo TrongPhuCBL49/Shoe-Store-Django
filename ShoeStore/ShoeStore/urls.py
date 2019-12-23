@@ -29,6 +29,7 @@ urlpatterns = [
     path('authen/', include('authen.urls')),
     path('products/', include('products.urls')),
     path('search/', include('search.urls')),
+    path('carts/', include('carts.urls')),
     path('admin/', admin.site.urls),
 
 ]
