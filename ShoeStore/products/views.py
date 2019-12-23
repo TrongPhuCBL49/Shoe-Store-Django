@@ -6,6 +6,21 @@ from django.shortcuts import render
 
 from .models import Product
 
+class ProductFeaturedListView(ListView):
+    template_name = "homepage/home.html"
+
+    def get_queryset(self, *args, **kwargs):
+        request = self.request
+        return Product.objects.all().featured()
+
+
+class ProductFeaturedDetailView(DetailView):
+    queryset = Product.objects.all().featured()
+    template_name = "products/product-detail.html"
+
+    # def get_queryset(self, *args, **kwargs):
+    #     request = self.request
+    #     return Product.objects.featured()
 
 class ProductListView(ListView):
     template_name = "homepage/home.html"
