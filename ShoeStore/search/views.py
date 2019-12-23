@@ -18,7 +18,7 @@ class SearchProductView(ListView):
         query = method_dict.get('q', None) # method_dict['q']
         print(query)
         if query is not None:
-            return Product.objects.filter(title__icontains=query) 
+            return Product.objects.search(query)
         return Product.objects.featured()
         '''
         __icontains = field contains this
