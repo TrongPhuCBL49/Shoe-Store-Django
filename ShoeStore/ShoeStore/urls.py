@@ -21,13 +21,14 @@ from django.contrib import admin
 from .views import HomeView
 
 urlpatterns = [
-    path('', HomeView.as_view()),
+    path('', HomeView.as_view(), name='home'),
     # url('about/', about_page),
     # url('contact/', contact_page),
     # url('login/', login_page),
     # url('register/', register_page),
     path('authen/', include('authen.urls')),
     path('products/', include('products.urls')),
+    path('search/', include('search.urls')),
     path('admin/', admin.site.urls),
 
 ]
