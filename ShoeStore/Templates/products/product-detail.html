@@ -53,11 +53,17 @@
 							<button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
 							 class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
 						</div>
-						<div class="card_area d-flex align-items-center">
-							<a class="primary-btn" href="{% static 'homepage/cart.html' %}">Add to Cart</a>
+						<form method="POST" action="{% url 'carts:update' %}" class="card_area d-flex align-items-center">
+							{% csrf_token %}
+							<input type="hidden" name="product_id" value="{{ object.id }}">
+							{% if object in cart.products.all %}
+								<button type="submit" class="primary-btn">View Cart</button>
+							{% else %}
+								<button type="submit" class="primary-btn">Add to Cart</button>
+							{% endif %}
 							<!-- <a class="icon_btn" href="#"><i class="lnr lnr lnr-diamond"></i></a> -->
 							<a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
-						</div>
+						</form>
 					</div>
 				</div>
 			</div>

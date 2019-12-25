@@ -58,23 +58,33 @@
 										<h6 class="l-through">{{Product.price}}</h6>
 									</div>
 									<div class="prd-bottom">
-
-										<a href="{% static 'homepage/cart.html' %}" class="social-info">
-											<span class="ti-bag"></span>
-											<p class="hover-text">add to bag</p>
-										</a>
-										<a href="{% static 'homepage/login.html' %}" class="social-info">
-											<span class="lnr lnr-heart"></span>
-											<p class="hover-text">Wishlist</p>
-										</a>
-										<a href="" class="social-info">
-											<span class="lnr lnr-sync"></span>
-											<p class="hover-text">compare</p>
-										</a>
-										<a href="{{Product.get_absolute_url}}" class="social-info">
-											<span class="lnr lnr-move"></span>
-											<p class="hover-text">view more</p>
-										</a>
+										<form method="POST" id="cart{{ Product.id }}" action="{% url 'carts:update' %}">
+											{% csrf_token %}
+											<input type="hidden" name="product_id" value="{{ Product.id }}">
+											{% if Product in cart.products.all %}
+												<a href="#" onclick="document.getElementById('cart{{ Product.id }}').submit()" class="social-info">
+													<span class="ti-bag"></span>
+													<p class="hover-text">view cart</p>
+												</a>
+											{% else %}
+												<a href="#" onclick="document.getElementById('cart{{ Product.id }}').submit()" class="social-info">
+													<span class="ti-bag"></span>
+													<p class="hover-text">Add to bag</p>
+												</a>
+											{% endif %}
+											<a href="{% static 'homepage/login.html' %}" class="social-info">
+												<span class="lnr lnr-heart"></span>
+												<p class="hover-text">Wishlist</p>
+											</a>
+											<a href="" class="social-info">
+												<span class="lnr lnr-sync"></span>
+												<p class="hover-text">compare</p>
+											</a>
+											<a href="{{Product.get_absolute_url}}" class="social-info">
+												<span class="lnr lnr-move"></span>
+												<p class="hover-text">view more</p>
+											</a>
+											</form>
 									</div>
 								</div>
 							</div>

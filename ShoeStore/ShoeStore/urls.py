@@ -18,10 +18,10 @@ from django.conf.urls.static import static
 from django.urls import path, include
 from django.contrib import admin
 
-from .views import HomeView
+from products.views import ProductListView
 
 urlpatterns = [
-    path('', HomeView.as_view(), name='home'),
+    path('', ProductListView.as_view(), name='home'),
     # url('about/', about_page),
     # url('contact/', contact_page),
     # url('login/', login_page),
