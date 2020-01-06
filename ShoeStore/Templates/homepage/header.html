@@ -45,7 +45,31 @@
                             </ul>
                         </li>
                         <li class="nav-item"><a class="nav-link" href="{% static 'homepage/contact.html' %}">Contact</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="nav-item d-flex flex-row justify-content-center align-items-center">
+                            <a style="color: #ff4757; font-weight: bold;">
+                                {{ request.user.username }} / 
+                            </a>
+                            <a href="{% url 'authen:logout' %}"
+                                style="color: #ff4757; font-weight: bold;">
+                                Logout
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="nav-item d-flex flex-row justify-content-center align-items-center">
+                            <a href="{% url 'authen:login' %}"
+                                style="color: #ff4757; font-weight: bold;">
+                                Login / 
+                            </a>
+                            <a href="{% url 'authen:register' %}"
+                                style="color: #ff4757; font-weight: bold;"
+                            >
+                                Register
+                            </a>
+                        </li>
+                        {% endif %}
                     </ul>
+                    
                     <ul class="nav navbar-nav navbar-right">
                         <li class="nav-item">                            
                             <a href="{% url 'carts:cart' %}" class="cart"> 

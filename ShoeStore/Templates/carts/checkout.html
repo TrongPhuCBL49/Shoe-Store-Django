@@ -124,15 +124,20 @@
                         <div class="order_box">
                             <h2>Your Order</h2>
                             <ul class="list">
-                                <li><a href="#">Product <span>Total</span></a></li>
-                                <li><a href="#">Fresh Blackberry <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                                <li><a href="#">Fresh Tomatoes <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
-                                <li><a href="#">Fresh Brocoli <span class="middle">x 02</span> <span class="last">$720.00</span></a></li>
+                                <li><a href="#">Product <span>Price</span></a></li>
+                                {% for product in object.cart.products.all %}
+                                    <li>
+                                        <div class="d-flex flex-row justify-content-between align-items-start">
+                                            <div style="width: 80%"><span>{{ product.title }}</span></div>
+                                            <div ><span>{{ product.price }}</span></div>
+                                        </div>
+                                    </li>
+                                {% endfor %}
                             </ul>
                             <ul class="list list_2">
-                                <li><a href="#">Subtotal <span>$2160.00</span></a></li>
-                                <li><a href="#">Shipping <span>Flat rate: $50.00</span></a></li>
-                                <li><a href="#">Total <span>$2210.00</span></a></li>
+                                <li><a href="#">Subtotal <span>${{ object.cart.total }}</span></a></li>
+                                <li><a href="#">Shipping <span>Flat rate: ${{ object.shipping_total }}</span></a></li>
+                                <li><a href="#">Total <span>${{ object.total }}</span></a></li>
                             </ul>
                             <div class="payment_item">
                                 <div class="radion_btn">

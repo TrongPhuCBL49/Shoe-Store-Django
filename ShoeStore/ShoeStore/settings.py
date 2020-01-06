@@ -55,6 +55,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+LOGOUT_REDIRECT_URL = '/'
 ROOT_URLCONF = 'ShoeStore.urls'
 
 TEMPLATES = [
