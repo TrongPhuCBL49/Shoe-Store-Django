@@ -112,8 +112,8 @@
                                     </td>
                                     <td>
                                         <div class="checkout_btn_inner d-flex align-items-center">
-                                            <a class="gray_btn" href="">Continue Shopping</a>{% comment %} {% url 'product:category' 'plimsoll-sneakers' %} {% endcomment %}
-                                            <a class="primary-btn" href="checkout.html">Proceed to checkout</a>
+                                            <a class="gray_btn" href="{% url 'home' %}">Continue Shopping</a>{% comment %} {% url 'product:category' 'plimsoll-sneakers' %} {% endcomment %}
+                                            <a class="primary-btn" href="{% url 'carts:checkout' %}">Proceed to checkout</a>
                                         </div>
                                     </td>
                                 </tr>
