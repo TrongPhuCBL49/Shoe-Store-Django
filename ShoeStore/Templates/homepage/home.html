@@ -61,10 +61,11 @@
 										<form method="POST" id="cart{{ Product.id }}" action="{% url 'carts:update' %}">
 											{% csrf_token %}
 											<input type="hidden" name="product_id" value="{{ Product.id }}">
+											<input type="hidden" name="current_url" value="{{ request.path }}">
 											{% if Product in cart.products.all %}
 												<a href="#" onclick="document.getElementById('cart{{ Product.id }}').submit()" class="social-info">
 													<span class="ti-bag"></span>
-													<p class="hover-text">view cart</p>
+													<p class="hover-text">Remove</p>
 												</a>
 											{% else %}
 												<a href="#" onclick="document.getElementById('cart{{ Product.id }}').submit()" class="social-info">
