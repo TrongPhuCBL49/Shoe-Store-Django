@@ -48,6 +48,22 @@
 					<!-- single product -->
 					{% for Product in object_list %}
 						<div class="col-lg-3 col-md-6">
+						<!--	<div style="
+							position: absolute;
+							top: 0;
+							right: 0;
+							display: flex;
+							flex-direction: row;
+							justify-content: center;
+							align-items: center;
+							padding: 1px 18px;
+							background: linear-gradient(90deg, #ffba00 0%, #ff6c00 100%);
+							z-index: 1;
+						">
+						<span style="
+							color: white;									
+						">HOT</span> 
+					</div> -->
 							<div class="single-product">
 								<a href="{{Product.get_absolute_url}}"><img class="img-fluid" src="{{ Product.image.url }}" width="262px" height="280px" alt=""></a>
 								<div class="product-details">
@@ -110,6 +126,7 @@
 				<div class="row">
 					{% for Product in Products %}
 						<div class="col-lg-3 col-md-6">
+							
 							<div class="single-product">
 								<img class="img-fluid" src="{{Product.image.url}}" width="262px" height="280px" alt="">
 								<div class="product-details">

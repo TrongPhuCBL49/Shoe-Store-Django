@@ -7,6 +7,7 @@ from django.db.models import Q
 
 from ShoeStore.utils import unique_slug_generator
 
+
 def get_filename_ext(filepath):
     base_name = os.path.basename(filepath)
     name, ext = os.path.splitext(base_name)
@@ -57,6 +58,13 @@ class ProductManager(models.Manager):
 
     def search(self, query):
         return self.get_queryset().active().search(query)
+
+    # def tag(self, request):
+    #     product_id = request.session.get("product_id", None)
+    #     qs = Tag.objects.filter(products__id = product_id)
+    #     if qs.count() == 1:
+    #         return qs.first();
+    #     return None
 
 
 # Create your models here.
