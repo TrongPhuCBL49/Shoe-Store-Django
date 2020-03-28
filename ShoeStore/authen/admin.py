@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import CustomerUser
+from .models import CustomerUser, GuestEmail    
 # Register your models here.
 
 
@@ -8,3 +8,5 @@ class CustomerUserAdmin(admin.ModelAdmin):
 
 
 admin.site.register(CustomerUser, CustomerUserAdmin)
+
+admin.site.register(GuestEmail)

@@ -32,7 +32,6 @@ class LoginForm(forms.Form):
         error_messages={'required': 'Password is required!'}
     )
 
-
 class RegisterForm(forms.Form):
     username = forms.CharField(
         widget=forms.TextInput(
@@ -140,3 +139,14 @@ class RegisterForm(forms.Form):
         if password != confirm_password:
             raise forms.ValidationError("Password must match!")
         return data
+
+class GuestForm(forms.Form):
+    email = forms.CharField(
+        widget=forms.EmailInput(
+            attrs={
+                'class': 'form-control',
+                'placeholder': 'Email Address',
+            }
+        ),
+        error_messages={'required': 'Email Address is required!'}
+    )

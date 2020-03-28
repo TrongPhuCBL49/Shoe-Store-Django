@@ -57,7 +57,7 @@
                         </li>
                         {% else %}
                         <li class="nav-item d-flex flex-row justify-content-center align-items-center">
-                            <a href="{% url 'authen:login' %}"
+                            <a href="{% url 'authen:login' %}?next={{ request.build_absolute_uri }}" 
                                 style="color: #ff4757; font-weight: bold;">
                                 Login / 
                             </a>

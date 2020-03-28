@@ -2,8 +2,11 @@ from django.shortcuts import render, redirect
 
 from billing.models import BillingProfile
 from orders.models import Order
-from .models import Cart
 from products.models import Product
+from authen.forms import GuestForm
+from authen.models import GuestEmail
+
+from .models import Cart
 
 def cart_home(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
@@ -38,10 +41,20 @@ def checkout_home(request):
         order_obj, new_order_obj = Order.objects.get_or_create(cart=cart_obj)
     user = request.user
     billing_profile = None
+    guest_form = GuestForm()
+    guest_email_id = request.session.get('guest_email_id')
     if user.is_authenticated:
-        billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(user = user, email = user.email)
+        billing_profile, billing_profile_created = BillingProfile.objects.get_or_create(
+            user = user, email = user.email)
+    elif guest_email_id is not None:
+        guest_email_object = GuestEmail.objects.get(id=guest_email_id)
+        billing_profile, billing_guest_profile_created = BillingProfile.objects.get_or_create(
+            email = guest_email_object.email)
+    else:
+        pass
     context = { 
         "object": order_obj,
         "billing_profile": billing_profile,
+        "guest_form": guest_form,
     }
     return render(request, "carts/checkout.html", context)

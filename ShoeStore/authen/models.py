@@ -45,3 +45,12 @@ class CustomerUser(AbstractUser):
         "Does the user have permissions to view the app `app_label`?"
         # Simplest possible answer: Yes, always
         return True
+
+class GuestEmail(models.Model):
+    email = models.EmailField()
+    active      = models.BooleanField(default=True)
+    update      = models.DateTimeField(auto_now=True)
+    timestamp   = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email    

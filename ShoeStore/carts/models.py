@@ -20,12 +20,13 @@ class CartManager(models.Manager):
                 cart_obj.user = request.user
                 cart_obj.save()
             return cart_obj, new_obj
-        if request.user.is_authenticated:
-            qs_user = self.get_queryset().filter(user=request.user)
-            if qs_user.count() != 0:
-                cart_obj = qs_user.first()
-                new_obj = False
-                return cart_obj, new_obj
+        # Keep cart when another session which the same user
+        # if request.user.is_authenticated:
+        #     qs_user = self.get_queryset().filter(user=request.user)
+        #     if qs_user.count() != 0:
+        #         cart_obj = qs_user.first()
+        #         new_obj = False
+        #         return cart_obj, new_obj
         cart_obj = Cart.objects.new(user=request.user)
         new_obj = True
         request.session['cart_id'] = cart_obj.id
