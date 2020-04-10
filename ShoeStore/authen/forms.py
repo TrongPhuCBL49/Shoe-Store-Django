@@ -99,10 +99,10 @@ class RegisterForm(forms.Form):
             'placeholder': 'Province',
         }
     ))
-    distric = forms.CharField(required=False, widget=forms.TextInput(
+    district = forms.CharField(required=False, widget=forms.TextInput(
         attrs={
             'class': 'form-control',
-            'placeholder': 'Distric',
+            'placeholder': 'District',
         }
     ))
     address = forms.CharField(required=False, widget=forms.TextInput(

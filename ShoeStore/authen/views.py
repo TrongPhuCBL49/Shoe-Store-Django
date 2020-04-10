@@ -20,10 +20,10 @@ def register_page(request):
         country = form.cleaned_data.get("country")
         phone_number = form.cleaned_data.get("phone_number")
         province = form.cleaned_data.get("province")
-        distric = form.cleaned_data.get("distric")
+        district = form.cleaned_data.get("district")
         address = form.cleaned_data.get("address")
         postcode = form.cleaned_data.get("postcode")
-        new_user = User.objects.create_superuser(username, email, first_name, last_name, phone_number, country, province, distric, address, postcode, password)
+        new_user = User.objects.create_superuser(username, email, first_name, last_name, phone_number, country, province, district, address, postcode, password)
         if new_user is not None:
             return redirect("/authen/login")
     return render(request, 'authen/register.html', context)

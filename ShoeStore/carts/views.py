@@ -3,8 +3,10 @@ from django.shortcuts import render, redirect
 from billing.models import BillingProfile
 from orders.models import Order
 from products.models import Product
-from authen.forms import GuestForm
 from authen.models import GuestEmail
+
+from authen.forms import GuestForm
+from addresses.forms import AddressForm
 
 from .models import Cart
 
@@ -38,6 +40,7 @@ def checkout_home(request):
     if cart_created or cart_obj.products.count() == 0:
         return redirect("cart:home")
     guest_form = GuestForm()
+    address_form = AddressForm()
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
     if billing_profile is not None:
         order_obj, order_obj_created = Order.objects.new_or_get(billing_profile, cart_obj)
@@ -45,5 +48,6 @@ def checkout_home(request):
         "object": order_obj,
         "billing_profile": billing_profile,
         "guest_form": guest_form,
+        "address_form": address_form,
     }
     return render(request, "carts/checkout.html", context)
